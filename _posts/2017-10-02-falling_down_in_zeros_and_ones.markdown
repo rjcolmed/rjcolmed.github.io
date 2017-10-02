@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Falling Down in Zeros and Ones"
-date:   2017-10-02 14:08:59 +0000
+date:   2017-10-02 10:09:00 -0400
 ---
 
 Making my FeaturedWiki CLI app was...operose.
