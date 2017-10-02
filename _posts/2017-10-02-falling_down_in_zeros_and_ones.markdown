@@ -12,7 +12,7 @@ But I did have a lot of fun. A lot. And I can't wait to do it again, to lie at t
 
 Less metaphorically, I coasted, dredged, and floated.
 
-# Coasting
+## Coasting
 
 Starting off wasn't too bad. The project is, at its core, a customized version of the Student Scraper lab we were tasked to complete in the previous lab.
 
@@ -81,7 +81,8 @@ I also used a simpler form of this in `.scrape_this_months_page`. Its URL path f
 Thus my `MONTH_PATH` class constant and its corresponding value:  `"/#{Date.today.strftime("%B")}_#{Date.today.year}"`
 
 Speaking of `.scrape_this_months_page`...
-# Dredging
+
+## Dredging
 
 Here's where I ran into my first big struggle. Wikipedia's fault. 
 
@@ -140,7 +141,7 @@ I had to iterate over each row first—rather than over an array of columns gene
 
 Hopefully, the above gives you an idea of how hard making `.scrape_most_viewed_page` was for me. Fun, though!
 
-# Floating
+## Floating
 
 
 The rest of the app was comparatively easy relative to the work that went into `.scrape_most_viewed_page`. It involved a lot of fiddling around, but nothing that made me feel like I had a contusion. 
