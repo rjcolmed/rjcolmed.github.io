@@ -52,7 +52,7 @@ Here's the scraper method I ended up with:
 
 Note my use of the `BASE_URL` and `DATE_PATH` class constants. These helped me clean my code up a bit. Otherwise I would've had stringy URLs littered througout my code. 
 
-Actually, `DATE_PATH` is kind of interesting, and it's the first solution in this project I had to research. Initially, I wrote a method to scrape Wikipedia's home page, specifically its 'From today's featured article' content block (![screenshot](https://imgur.com/a/C1OTD))
+Actually, `DATE_PATH` is kind of interesting, and it's the first solution in this project I had to research. Initially, I wrote a method to scrape Wikipedia's home page, specifically its 'From today's featured article' content block.
 
 But, as I did a bit more research, I found that every featured article has its own TFA-specific page. And it's this page from which the content block on the home page is sourced. There's no direct link to it from the 'From today's featured article' content block on the home page, but (just FYI) you can get to it in a few clicks. 
 
@@ -78,7 +78,7 @@ I also used a simpler form of this in `.scrape_this_months_page`. Its URL path f
 
 `https://en.wikipedia.org/wiki/Wikipedia:Today%27s_featured_article/MONTH-NAME_YEAR`. 
 
-Thus my MONTH_PATH class constant and its corresponding value:  `"/#{Date.today.strftime("%B")}_#{Date.today.year}"`
+Thus my `MONTH_PATH` class constant and its corresponding value:  `"/#{Date.today.strftime("%B")}_#{Date.today.year}"`
 
 Speaking of `.scrape_this_months_page`...
 # Dredging
@@ -94,6 +94,8 @@ I don't want to spend to much time on this, but, suffice it to say that this pag
 A quick example of my pain: 
 
 On this page, there's a little section for each day of the month's featured article. What there isn't is a dedicated article title element. What there was were two places from which I could possibly pull the title. Each article's blurb links to the full article via a link appearing fairly consistently in the blurb's first sentence. However, each link's `<a>` tags were inconsistently placed relative to its surrounding siblings (see screenshots below), so I had to come up with something else before I developed an anger-induced calcium deficiency. See ![screenshot A](https://imgur.com/wen3tVE) and ![screenshot B](https://imgur.com/fyk7tHp).
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="wen3tVE"><a href="//imgur.com/wen3tVE"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 After some putzing around with Chrome's dev console, Nokogiri, and Pry, I found another source for the title, one with more consistent placement relative to the document's structure. Each featured article section contains a **'(Full article...)'** link at the end its blurb. With `p.css('a:has(b)')[0]['href']`, I was able to access the article's title and URL to its full version. A twofer if I ever saw one (![screenshot](https://imgur.com/bzLtzsd)).
 
