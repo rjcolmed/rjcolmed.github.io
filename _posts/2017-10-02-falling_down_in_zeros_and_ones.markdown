@@ -93,19 +93,15 @@ I don't want to spend to much time on this, but, suffice it to say that this pag
 
 A quick example of my pain: 
 
-On this page, there's a little section for each day of the month's featured article. What there isn't is a dedicated article title element. What there was were two places from which I could possibly pull the title. Each article's blurb links to the full article via a link appearing fairly consistently in the blurb's first sentence. However, each link's `<a>` tags were inconsistently placed relative to its surrounding siblings (see screenshots below), so I had to come up with something else before I developed an anger-induced calcium deficiency. See ![screenshot A](https://imgur.com/wen3tVE) and ![screenshot B](https://imgur.com/fyk7tHp).
+On this page, there's a little section for each day of the month's featured article. What there isn't is a dedicated article title element. What there was were two places from which I could possibly pull the title. Each article's blurb links to the full article via a link appearing fairly consistently in the blurb's first sentence. However, each link's `<a>` tags were inconsistently placed relative to its surrounding siblings (see screenshots below), so I had to come up with something else before I developed an anger-induced calcium deficiency.
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="wen3tVE"><a href="//imgur.com/wen3tVE"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-
-After some putzing around with Chrome's dev console, Nokogiri, and Pry, I found another source for the title, one with more consistent placement relative to the document's structure. Each featured article section contains a **'(Full article...)'** link at the end its blurb. With `p.css('a:has(b)')[0]['href']`, I was able to access the article's title and URL to its full version. A twofer if I ever saw one (![screenshot](https://imgur.com/bzLtzsd)).
+After some putzing around with Chrome's dev console, Nokogiri, and Pry, I found another source for the title, one with more consistent placement relative to the document's structure. Each featured article section contains a **'(Full article...)'** link at the end its blurb. With `p.css('a:has(b)')[0]['href']`, I was able to access the article's title and URL to its full version. A twofer if I ever saw one.
 
 Wikipedia also has a page where they list the most viewed TFA articles. 
 
 I wanted that for my app. Unfortunately, making it wasn't as easy as wanting it. 
 
-Wikipedia's fault.
-
-If you take a look at this ![screenshot](https://drive.google.com/open?id=0B78LezNCVoqHTU1FOWF5VFpjMWchttp://), you'll see that Wikipedia's editors organize each most viewed TFA and its respective data in a table. 
+Wikipedia's fault, its editors organize each most viewed TFA and its respective data in a table constructed out of mostly unmarked tags. 
 
 This was really hard for me to figure out how to scrape, especially since I only needed data from 3 out of 5 table columns. But, after a few rounds of stressful inspecting and Pry-ing, I sussed out the tags I needed and, even more importantly, was able to figure out how to iterate over the node structure to retrieve the info from those tags.
 
