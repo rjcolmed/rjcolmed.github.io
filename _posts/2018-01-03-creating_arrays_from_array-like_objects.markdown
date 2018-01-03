@@ -8,7 +8,7 @@ permalink:  creating_arrays_from_array-like_objects
 
 During my deeper travels into JavaScript, I've encountered a few useful ways to convert Array-like objects into arrays.
 
-# Objects Pretending to Be Arrays
+## Objects Pretending to Be Arrays
 
 First, though, what is an Array-like object? It's something that looks like an array, but isn't. 
 
@@ -34,7 +34,7 @@ getArguments('flippity', 'floppity');
 
 Copy and paste it into Chrome's dev console and you'll see that it returns an Arguments object.
 
-# Helping Non-Arrays Be All They Can Be
+## Helping Non-Arrays Be All They Can Be
 
 Now that we have a good idea of what an Array-like object is, and where we might encounter it in the wild, how do we convert them into Array objects, so we can take advantage of  useful methods, e.g. `.forEach`?
 
@@ -50,7 +50,7 @@ for ( let i = 0; i < divs.length; i++ ) {
 
 If you were so inclined, you could convert the HTMLCollection of divs you've got on your hands into an array using one of the following:
 
-# Array.prototype.slice and .call
+## Array.prototype.slice and .call
 
 You can call on the Array object to help you out by chaining its [.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) method and [.call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call).
 
@@ -63,7 +63,7 @@ newArray.forEach(div => //do something with div);
 
 ```
 
-# [].slice() and .call()
+## [].slice() and .call()
 
 `[]` is a proxy for Array.prototype, which means less typing, which is good for our fingers. 
 
@@ -75,7 +75,7 @@ const newArray = [].slice.call(document.getElementsByTagName('div'));
 newArray.forEach(div => //do something with div);
 ```
 
-# Array.from()
+## Array.from()
 
 Continuing our petition to the Array object, we can also use [Array.from()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from). **NB**: This method won't work in Internet Explorer without a bit of extra help (see the linked MDN page for more info).
 
@@ -87,7 +87,7 @@ const newArray = Array.from(document.getElementsByTagName('div'));
 newArray.forEach(div => //do something with div);
 ```
 
-# [...]
+## [...]
 
 Finally, the spread operator is a fantastic way to convert Array-like objects into arrays. It's cleaner and pithier than the previously-listed methods. One downside, however, is that it's a bit less semantic than `Array.from`, but I still prefer it.
 
